@@ -1,0 +1,7 @@
+* {
+    red: var(--primary-color);
+    blue: var(--background-color);
+    dark blue: var(--secondary-background-color);
+    white: var(--text-color);
+    monospace: var(--font);
+  }
