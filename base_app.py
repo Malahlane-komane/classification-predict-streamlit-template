@@ -22,26 +22,6 @@
 
 """
 
-# Data dependencies
-from os import path
-
-# Streamlit dependencies
-from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
-import scipy.sparse
-#from nlppreprocess import NLP
-from sklearn.base import BaseEstimator, TransformerMixin
-#from nltk.stem import WordNetLemmatizer
-#from nltk.corpus import stopwords
-import warnings
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-#from nltk import pos_tag
-import string
-import re
-#import nltk
-#from nltk.tokenize import word_tokenize, TreebankWordTokenizer
-
 # Streamlit dependencies
 from turtle import right
 import streamlit as st
@@ -55,14 +35,6 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
-# Visualization  dependencies
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly
-import plotly.express as px
-import matplotlib as mpl
-import matplotlib.style as style
-from wordcloud import WordCloud
 
 # Vectorizer
 news_vectorizer = open("resources/vectorizer.pkl","rb")
@@ -71,7 +43,6 @@ tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl f
 # Load your raw data
 raw = pd.read_csv("resources/train.csv")
 #clean = pd.read_csv("resources/trainclean.csv")
-
 
 
 def load_lottieurl(url):
@@ -84,6 +55,7 @@ def load_lottieurl(url):
 # The main function where we will build the actual app
 def main():
 	"""Tweet Classifier App with Streamlit """
+
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
@@ -113,16 +85,22 @@ def main():
                 "Select a graph", graphs)
 		if graphs_choice == "Tweet Sentiment Distribution":
 			st.image("resources\imgs\streamlit@.png")
+			st.markdown("We have analyzed our data and come to a conclusion that most people believe that climate change is man-made.If you can take a look at the distribution more than 50% of the data is Positively to the fact the climate change is man-made with the next highest bar beginning news which shows that whatever is in the news can affect the beliefs of the other people if we have news saying that climate is man-made we might have a high chance that people will believe that.Anti being the smallest bar it just shows that not a lot of people believe that its man-made.")
 		elif graphs_choice == "Popular Words for Anti Tweets":
 			st.image("resources\imgs\streamlit5.png")
+			st.markdown(" The most popular word in anti is  RT which means retweet,it goes to show that on the anti side people don't believe in man-made climate change they just chose to retweet stuff. Going to the word cloud it shows that Don ald Trump believes that Chinese people are the ones that made climate change for their own benefit.")
 		elif graphs_choice == "Popular Words for News Tweets":
 			st.image("resources\imgs\streamlit2.png")
+			st.markdown("We have analyzed that most words in the news are Trump and Global which might mean that Donald Trump tweets a lot about climate change and global warming then it makes it to the news. ")
 		elif graphs_choice == "Popular Words for pro Tweets":
 			st.image("resources\imgs\streamlit3.png")
+			st.markdown("The most popular words in pro tweets are climate and change which goes to show that most people strongly believe that it's man_made in the analysis Donnald trump is not part of the common words in pro tweets. ")
 		elif graphs_choice == "Popular Words for Neutral Tweets":
 			st.image("resources\imgs\streamlit4.png")
+			st.markdown("The most popular words for neutral tweets are climate, RT and global.")
 		elif graphs_choice == "word cloud":
 			st.image("resources\imgs\streamlit6.png")
+			st.markdown("In word cloud we have an analysis that the most used word throughout the tweets in climate change which shows that people are having conversations about climate change and they are starting to take it serious as it's going to affect the earth in a very harmful way.Which means that people might be trying to find a way to save the earth and reduce greenhouse gases.")
 		
 
 
@@ -181,15 +159,15 @@ def main():
 			st.write("##")
 			st.write(
 				"""
-				komane Malahlane - software engineer
+				komane Malahlane - software Engineer
 
 				Gabrielle Peria -Data scientist
 
-				Pamela Bokabo - Sale
+				Pamela Bokabo - Production Manager
 
 				Tshepiso Puka - Marketing Director
 
-				Dumisani - CEO
+				Dumisani - Sales Manager
 
 				Shalom Mashabane -Data engineer
 				""")
@@ -204,7 +182,7 @@ def main():
 				""")
 
 
-		#creating a contact
+		# #creating a contact
 		with st.container():
 			st.write("---")
 			st.header(":mailbox_with_mail: Get In Touch With us!")
@@ -221,6 +199,11 @@ def main():
 			"""
 
 		st.markdown(contact_form, unsafe_allow_html=True)
+		# Use local CSS
+		def local_css(file_name):
+			with open(file_name) as f:
+				st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+		local_css("style/style.css")
 
 	
 		with st.container():
@@ -236,20 +219,6 @@ def main():
 if __name__ == '__main__':
 	main()
 	
-# Use local CSS
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-local_css("style/style.css")
-
-
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-
 
 # ---- LOAD ASSETS ----
 lottie_coding = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_22mjkcbb.json")

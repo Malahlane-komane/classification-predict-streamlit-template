@@ -24,11 +24,3 @@ input[type=text], input[type=email], textarea {
   input[type=submit]:hover {
     background-color: #45a049;
   }
-
-  main[type=theme] {
-    red: var(--primary-color);
-    blue: var(--background-color);
-    dark blue: var(--secondary-background-color);
-    white: var(--text-color);
-    monospace: var(--font);
-  }
