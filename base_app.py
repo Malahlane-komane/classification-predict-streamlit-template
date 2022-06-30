@@ -159,7 +159,7 @@ def main():
 			st.write("##")
 			st.write(
 				"""
-				komane Malahlane - software Engineer
+				komane Malahlane - Software Engineer
 
 				Gabrielle Peria -Data scientist
 
